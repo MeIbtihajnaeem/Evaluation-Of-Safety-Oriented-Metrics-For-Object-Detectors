@@ -1,5 +1,10 @@
 from ..enumerations import Goal, ObjectClasses
 from typing import List
+import itertools
+from nuscenes import NuScenes
+
+# custom imports
+import nuscenes.eval.detection.config as config
 
 
 class SettingsModel:
@@ -17,6 +22,7 @@ class SettingsModel:
                  max_d=None,
                  max_r=None,
                  max_t=None,
+                 verbose = None,
                  dist=None,
                  conf_th=None,
                  criticalities=None,
@@ -49,6 +55,8 @@ class SettingsModel:
             nuscenes_detectors = {"PointPillars": 'POINTP', }
         if scene_for_eval_set is None:
             scene_for_eval_set = ['scene-0519', 'scene-0013', ]
+        if verbose is None:
+            verbose = False
 
         if not isinstance(mmdet3d_nuscenes_results_path, str):
             raise ValueError(
@@ -91,6 +99,15 @@ class SettingsModel:
         self.nuscenes_detectors = nuscenes_detectors
         self.scene_for_eval_set = scene_for_eval_set
         self.data_root = data_root
+        self.result_path = notebook_home + "'pkl/results/GOAL2/retry_allobjects/"
+        self.drt = list(itertools.product(*[max_d, max_r, max_t]))
+        self.nuscenes = NuScenes('v1.0-trainval', dataroot=data_root)
+        self.conf_value = config.config_factory("detection_cvpr_2019")
+        self.verbose = verbose
+        self.path_for_object_detectors_result_dir = path_for_object_detectors_result_dir
+        self.path_for_object_detectors_result_json_file = path_for_object_detectors_result_json_file
+        self.pkl_planner_path = pkl_planner_path
+        self.mask_json_path = mask_json_path
 
     def __repr__(self):
         return f"SettingsModel(goal={self.goal}, mmdet3d_nuscenes_results_path='{self.mmdet3d_nuscenes_results_path}')"

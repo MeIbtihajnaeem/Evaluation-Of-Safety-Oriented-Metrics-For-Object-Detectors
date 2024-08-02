@@ -24,6 +24,9 @@ setup(
     ],
     install_requires=[
         'numpy',
+        'torch==1.3.1',
+        'planning-centric-metrics==0.0.8',
+        'torchvision==0.4.2',
         'nuscenes-devkit==1.1.10',
     ],
     python_requires=">=3.7.9"

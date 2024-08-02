@@ -1,0 +1,6 @@
+setup.py
+src/Evaluation_Of_Safety_Oriented_Metrics_For_Object_Detectors.egg-info/PKG-INFO
+src/Evaluation_Of_Safety_Oriented_Metrics_For_Object_Detectors.egg-info/SOURCES.txt
+src/Evaluation_Of_Safety_Oriented_Metrics_For_Object_Detectors.egg-info/dependency_links.txt
+src/Evaluation_Of_Safety_Oriented_Metrics_For_Object_Detectors.egg-info/requires.txt
+src/Evaluation_Of_Safety_Oriented_Metrics_For_Object_Detectors.egg-info/top_level.txt

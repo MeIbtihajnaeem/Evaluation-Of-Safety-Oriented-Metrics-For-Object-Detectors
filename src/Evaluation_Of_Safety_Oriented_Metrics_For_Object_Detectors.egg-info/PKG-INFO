@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: Evaluation-Of-Safety-Oriented-Metrics-For-Object-Detectors
+Version: 0.0.1
+Summary: We argue that object detectors in the safety critical domain should prioritize detection of objects that are most likely to interfere with the actions of the actor, especially when they can impact task safety and reliability.
+Home-page: 
+Author: MuhammadIbtihajNaeem
+Author-email: pro.ibtihajnaeem@gmail.com
+Classifier: License :: 
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7.9
+Description-Content-Type: text/markdown
