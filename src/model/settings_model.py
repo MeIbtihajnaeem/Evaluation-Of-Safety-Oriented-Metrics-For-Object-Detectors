@@ -1,4 +1,4 @@
-from ..enumerations import Goal, ObjectClasses
+from ..enumerations import GOAL, OBJECT_CLASSES, DETECTOR
 from typing import List
 import itertools
 from nuscenes import NuScenes
@@ -9,6 +9,7 @@ import nuscenes.eval.detection.config as config
 
 class SettingsModel:
     def __init__(self,
+                 detector: DETECTOR,
                  mmdet3d_nuscenes_results_path: str,
                  notebook_home: str,
                  data_root: str,
@@ -16,13 +17,14 @@ class SettingsModel:
                  mask_json_path: str,
                  path_for_object_detectors_result_dir: str,
                  path_for_object_detectors_result_json_file: str,
+                 detector_file: str,
                  goal=None,
                  array_of_object_classes=None,
                  array_of_object_classes_reduced=None,
                  max_d=None,
                  max_r=None,
                  max_t=None,
-                 verbose = None,
+                 verbose=None,
                  dist=None,
                  conf_th=None,
                  criticalities=None,
@@ -40,11 +42,11 @@ class SettingsModel:
             max_r = [12, 16, 20]
 
         if array_of_object_classes is None:
-            array_of_object_classes = List[ObjectClasses.car]
+            array_of_object_classes = List[OBJECT_CLASSES.car]
         if array_of_object_classes_reduced is None:
-            array_of_object_classes_reduced = List[ObjectClasses.car]
+            array_of_object_classes_reduced = List[OBJECT_CLASSES.car]
         if goal is None:
-            goal = Goal.goal1
+            goal = GOAL.goal1
         if dist is None:
             dist = [0.5, 1.0, 2.0, 4.0]
         if conf_th is None:
@@ -73,12 +75,18 @@ class SettingsModel:
         if not isinstance(mask_json_path, str):
             raise ValueError(
                 "Please provide a valid trainval.json file path")
+        if not isinstance(detector_file, str):
+            raise ValueError(
+                "Please provide a valid path for detectors directory")
         if not isinstance(path_for_object_detectors_result_dir, str):
             raise ValueError(
                 "Please provide a valid path for results of the object detectors directory")
         if not isinstance(path_for_object_detectors_result_json_file, str):
             raise ValueError(
                 "Please provide a valid path for results of the object detectors json file (result_nusc.json)")
+        if not isinstance(detector, DETECTOR):
+            raise ValueError(
+                "Please provide a valid detector ")
 
         self.mmdet3d_nuscenes_results_path = mmdet3d_nuscenes_results_path
         self.notebook_home = notebook_home
@@ -108,6 +116,9 @@ class SettingsModel:
         self.path_for_object_detectors_result_json_file = path_for_object_detectors_result_json_file
         self.pkl_planner_path = pkl_planner_path
         self.mask_json_path = mask_json_path
+        self.detector = detector
+        self.save_build_precision_recall_curve_data = notebook_home+"/pkl"+goal.name+"/result_object/"+DETECTOR.value+'/PrecisionRecall/Normal/'
+        self.detector_file = detector_file+DETECTOR.value+'/results_nusc.json'
 
     def __repr__(self):
         return f"SettingsModel(goal={self.goal}, mmdet3d_nuscenes_results_path='{self.mmdet3d_nuscenes_results_path}')"

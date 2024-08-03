@@ -20,10 +20,10 @@
          'scene-1068', 'scene-1069', 'scene-1070', 'scene-1071', 'scene-1072', 'scene-1073']
 """
 from src.model.settings_model import SettingsModel
-from src.enumerations import ObjectClasses, Goal
+from src.enumerations import OBJECT_CLASSES, GOAL
 import numpy as np
 
-goal = Goal.goal2
+goal = GOAL.goal2
 notebook_home = "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/assets/"
 data_root = notebook_home + "nuscene/data"
 model_path = notebook_home + "pkl/planner.pt"
@@ -34,8 +34,8 @@ result_path = notebook_home + 'pkl/results/' + goal.goal1.name + '/retry_allobje
 
 
 def getSettingsModel():
-    array_of_object_classes = [ObjectClasses.car.name, ObjectClasses.bus.name, ObjectClasses.truck.name]
-    array_of_object_classes_reduced = [ObjectClasses.car.name]
+    array_of_object_classes = [OBJECT_CLASSES.car.name, OBJECT_CLASSES.bus.name, OBJECT_CLASSES.truck.name]
+    array_of_object_classes_reduced = [OBJECT_CLASSES.car.name]
     max_d = list(range(5, 55, 10))
     max_r = list(range(5, 55, 10))
     max_t = list(range(4, 25, 10))

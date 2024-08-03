@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f36a04e-d70b-414c-bf51-e262b377be8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/detectorAndTrajectoryPackage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/detectorAndTrajectoryPackage.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/class_implementations/collection_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Evaluation_Of_Safety_Oriented_Metrics_For_Object_Detectors.egg-info/requires.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Evaluation_Of_Safety_Oriented_Metrics_For_Object_Detectors.egg-info/requires.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/collection_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/collection_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enumerations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumerations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/example/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/example/example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/settings_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/settings_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/collection_utils.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +57,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils/class_implementations" />
       <recent name="$PROJECT_DIR$/src/example" />
     </key>
   </component>
