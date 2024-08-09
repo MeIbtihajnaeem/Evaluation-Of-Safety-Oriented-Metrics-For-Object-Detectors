@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f36a04e-d70b-414c-bf51-e262b377be8e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/class_implementations/collection_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Evaluation_Of_Safety_Oriented_Metrics_For_Object_Detectors.egg-info/requires.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Evaluation_Of_Safety_Oriented_Metrics_For_Object_Detectors.egg-info/requires.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/collection_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/collection_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enumerations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/enumerations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/example/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/example/example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/settings_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/settings_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/collection_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/class_implementations/collection_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/class_implementations/collection_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/modified_nuscenes/eval/detection/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/pkl/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/pkl/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/pkl/consolidated_imports.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/pkl/consolidated_imports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/pkl/planning_kl.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/pkl/planning_kl.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,22 +46,55 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.collection_controller.executor": "Run",
+    "Python.example.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/detectorAndTrajectoryPackage/src/utils/pkl",
+    "last_opened_file_path": "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/detectorAndTrajectoryPackage/src/utils/modified_nuscenes_pkl",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl" />
+      <recent name="$PROJECT_DIR$/src/utils/modified_nuscenes/eval" />
       <recent name="$PROJECT_DIR$/src/utils/pkl" />
       <recent name="$PROJECT_DIR$/src/utils/modified_nuscenes/eval/detection" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl" />
       <recent name="$PROJECT_DIR$/src/utils/class_implementations" />
       <recent name="$PROJECT_DIR$/src/example" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="detectorAndTrajectoryPackage" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/example" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/example/example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.example" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -78,5 +113,16 @@
       <updated>1722514734991</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/data_classes.py</url>
+          <line>404</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

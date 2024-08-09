@@ -1,4 +1,4 @@
-from ..enumerations import GOAL, OBJECT_CLASSES, DETECTOR
+from enumerations import GOAL, OBJECT_CLASSES, DETECTOR
 from typing import List
 import itertools
 from nuscenes import NuScenes
@@ -30,7 +30,7 @@ class SettingsModel:
                  criticalities=None,
                  n_workers=10,
                  bsz=128,
-                 gpu_id=0,
+                 gpu_id=-1,
                  number_of_image_bird_view=0,
                  nuscenes_detectors=None,
                  scene_for_eval_set=None):
@@ -107,7 +107,8 @@ class SettingsModel:
         self.nuscenes_detectors = nuscenes_detectors
         self.scene_for_eval_set = scene_for_eval_set
         self.data_root = data_root
-        self.result_path = notebook_home + "'pkl/results/GOAL2/retry_allobjects/"
+        goal_value = goal.value
+        self.result_path = notebook_home + "pkl/results/"+goal_value+"/retry_allobjects/"
         self.drt = list(itertools.product(*[max_d, max_r, max_t]))
         self.nuscenes = NuScenes('v1.0-trainval', dataroot=data_root)
         self.conf_value = config.config_factory("detection_cvpr_2019")
@@ -117,8 +118,10 @@ class SettingsModel:
         self.pkl_planner_path = pkl_planner_path
         self.mask_json_path = mask_json_path
         self.detector = detector
-        self.save_build_precision_recall_curve_data = notebook_home+"/pkl"+goal.name+"/result_object/"+DETECTOR.value+'/PrecisionRecall/Normal/'
-        self.detector_file = detector_file+DETECTOR.value+'/results_nusc.json'
+
+        detector_value = detector.value
+        self.save_build_precision_recall_curve_data = notebook_home+"pkl/"+goal_value+"/result_objects/"+detector_value+'/PrecisionRecall/Normal/'
+        self.detector_file = detector_file+detector_value+'/results_nusc.json'
 
     def __repr__(self):
         return f"SettingsModel(goal={self.goal}, mmdet3d_nuscenes_results_path='{self.mmdet3d_nuscenes_results_path}')"

@@ -22,13 +22,21 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Operating System :: OS Independent",
     ],
+
     install_requires=[
-        'numpy',
         'torch==1.3.1',
-        'matplotlib==3.5.2',
+        'torchvision>=0.5.0',
+        'Pillow<7.0.0',
+        'pandas',
+        'numpy',
         'planning-centric-metrics==0.0.8',
-        'torchvision==0.4.2',
         'nuscenes-devkit==1.1.10',
+        'tqdm==4.66.4',
+        'pyquaternion==0.9.9',
+        'matplotlib==3.5.2',
     ],
+    extras_require={
+        "dev": ["pytest>=7.0", "twine>=4.0.2", "mockito>=1.5.0", "coverage"]
+    },
     python_requires=">=3.7.9"
 )

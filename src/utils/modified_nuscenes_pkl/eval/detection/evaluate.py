@@ -19,7 +19,6 @@ from copy import deepcopy
 # from ..common.data_classes import EvalBox
 # from nuscenes.eval.common.data_classes import EvalBoxes
 # from ..common.data_classes import EvalBoxes
-# from nuscenes.eval.common.loaders import load_prediction, load_gt, add_center_dist, filter_eval_boxes
 # from ..common.loaders import load_prediction, load_gt, add_center_dist, filter_eval_boxes
 # from ..common.consolidated_imports import import_loaders
 # from .algo import accumulate, calc_ap, calc_ap_crit, calc_tp
@@ -30,26 +29,29 @@ from copy import deepcopy
 # from .data_classes import DetectionConfig, DetectionMetrics, DetectionBox, DetectionMetricDataList
 # from ....pkl.planning_kl import calculate_pkl, test_pkl, pkl_print_visualizations, test_pkl_2
 
+
+from utils.modified_nuscenes_pkl.eval.common.loaders import load_prediction, load_gt, filter_eval_boxes
 from nuscenes import NuScenes
 from nuscenes.map_expansion.map_api import NuScenesMap
 from nuscenes.eval.common.config import config_factory
 from nuscenes.eval.detection.constants import TP_METRICS
-from ....pkl.consolidated_imports import import_all as pkl_all_imports
-from ..common.consolidated_imports import import_loaders
+from utils.modified_nuscenes_pkl.pkl.consolidated_imports import import_for_eval as pkl_all_imports
+from utils.modified_nuscenes_pkl.eval.common.consolidated_imports import import_loaders
+# from ..common.consolidated_imports import import_loaders
 from ..common.data_classes import EvalBoxes
 from .consolidated_imports import import_algo, import_render
 from .consolidated_imports import import_data_classes as detection_data_classes
 from ...utils.consolidated_imports import import_all as nuscenes_utils
-
+from utils.modified_nuscenes_pkl.eval.detection.data_classes import DetectionMetrics, DetectionBox, \
+    DetectionMetricDataList
+from utils.modified_nuscenes_pkl.eval.detection.algo import accumulate, calc_ap_crit
+from utils.modified_nuscenes_pkl.eval.detection.render import summary_plot_crit, class_pr_curve_crit,visualize_sample_crit, visualize_sample_crit_r, visualize_sample_crit_d,visualize_sample_crit_t, visualize_sample_debug_1
 calculate_pkl, test_pkl, pkl_print_visualizations, test_pkl_2 = pkl_all_imports()
-DetectionConfig, DetectionMetrics, DetectionBox, DetectionMetricDataList = detection_data_classes()
+DetectionConfig = detection_data_classes()
 Box = nuscenes_utils()
-load_prediction, load_gt, add_center_dist, filter_eval_boxes = import_loaders()
-accumulate, calc_ap, calc_ap_crit, calc_tp = import_algo()
-(summary_plot, summary_plot_crit, class_pr_curve, class_pr_curve_crit,
- class_tp_curve, dist_pr_curve, visualize_sample,
- visualize_sample_crit, visualize_sample_crit_r, visualize_sample_crit_d,
- visualize_sample_crit_t, visualize_sample_debug_1) = import_render()
+add_center_dist = import_loaders()
+calc_ap, calc_tp = import_algo()
+summary_plot, class_pr_curve, class_tp_curve, visualize_sample, dist_pr_curve = import_render()
 
 # from nuscenes.eval.detection.algo import accumulate, calc_ap, calc_ap_crit, calc_tp
 # from nuscenes.eval.detection.data_classes import DetectionConfig, DetectionMetrics, DetectionBox, \

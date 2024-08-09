@@ -19,66 +19,67 @@
          'scene-1060', 'scene-1061', 'scene-1062', 'scene-1063', 'scene-1064', 'scene-1065', 'scene-1066', 'scene-1067',
          'scene-1068', 'scene-1069', 'scene-1070', 'scene-1071', 'scene-1072', 'scene-1073']
 """
+
 from src.model.settings_model import SettingsModel
 from src.enumerations import OBJECT_CLASSES, GOAL
 import numpy as np
+from enumerations import DETECTOR
+from controller.collection_controller import CollectionController
+from utils.file_utils import FileUtils
+from utils.class_implementations.collection_utils import CollectionUtils
 
-goal = GOAL.goal2
+goal = GOAL.goal1
 notebook_home = "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/assets/"
 data_root = notebook_home + "nuscene/data"
 model_path = notebook_home + "pkl/planner.pt"
 mask_json = notebook_home + "pkl/masks_trainval.json"
-path = notebook_home + 'pkl/result_object/'
+path = notebook_home + 'pkl/result_objects/'
 file_json = '/results_nusc.json'
-result_path = notebook_home + 'pkl/results/' + goal.goal1.name + '/retry_allobjects/'
+result_path = notebook_home + 'pkl/results/' + goal.name + '/retry_allobjects/'
 
 
-def getSettingsModel():
-    array_of_object_classes = [OBJECT_CLASSES.car.name, OBJECT_CLASSES.bus.name, OBJECT_CLASSES.truck.name]
-    array_of_object_classes_reduced = [OBJECT_CLASSES.car.name]
+def compute_example():
+    array_of_object_classes = [OBJECT_CLASSES.car.value]
+    array_of_object_classes_reduced = [OBJECT_CLASSES.car.value]
     max_d = list(range(5, 55, 10))
     max_r = list(range(5, 55, 10))
     max_t = list(range(4, 25, 10))
     dist = [0.5, 1.0, 2.0, 4.0]
     conf_th = list(np.arange(0.05, 0.4, 0.05))
     criticalities = list(np.arange(0.10, 0.4, 0.05))
+    settings = SettingsModel(
+        detector=DETECTOR.POINTP,
+        mmdet3d_nuscenes_results_path="/",
+        notebook_home=notebook_home,
+        data_root=data_root,
+        pkl_planner_path=model_path,
+        mask_json_path=mask_json,
+        path_for_object_detectors_result_dir=path,
+        path_for_object_detectors_result_json_file=file_json,
+        detector_file="none",
+        goal=goal,
+        array_of_object_classes=array_of_object_classes,
+        array_of_object_classes_reduced=array_of_object_classes_reduced,
+        max_d=max_d,
+        max_r=max_r,
+        max_t=max_t,
+        verbose=False,
+        dist=dist,
+        conf_th=conf_th,
+        criticalities=criticalities,
+        n_workers=10,
+        bsz=128,
+        gpu_id=0,
+        number_of_image_bird_view=0,
+        nuscenes_detectors={
+            "PointPillars": 'POINTP'
+        },
+        scene_for_eval_set=['scene-0519','scene-0013']
+    )
+    file_utils = FileUtils()
+    col_utils = CollectionUtils()
+    collection_controller = CollectionController(settingsModel=settings, file_util=file_utils, ColUtils=col_utils)
+    collection_controller.run()
 
-    return SettingsModel(mmdet3d_nuscenes_results_path="/",
-                         notebook_home=notebook_home,
-                         data_root=data_root,
-                         pkl_planner_path=model_path,
-                         mask_json_path=mask_json,
-                         path_for_object_detectors_result_dir=path,
-                         path_for_object_detectors_result_json_file=file_json,
-                         goal=goal,
-                         array_of_object_classes=array_of_object_classes,
-                         array_of_object_classes_reduced = array_of_object_classes_reduced,
-                         max_d=max_d,
-                         max_r=max_r,
-                         max_t=max_t,
-                         dist=dist,
-                         conf_th=conf_th,
-                         criticalities=criticalities,
-                         n_workers=10,
-                         bsz=128,
-                         gpu_id=0,
-                         number_of_image_bird_view=0,
-                         nuscenes_detectors={
-                             "SECFPN": 'SECFPN',
-                             "PointPillars": 'POINTP',
-                             "SSN": 'SSN',
-                             "PGD": 'PGD',
-                             "FCOS3D": 'FCOS3D',
-                         },
-                         scene_for_eval_set=['scene-0013',
-                                             'scene-0554',
-                                             'scene-0771',
-                                             'scene-0929',
-                                             'scene-1070',
-                                             'scene-1072',
-                                             'scene-0798',
-                                             'scene-0108',
-                                             'scene-0519',
-                                             'scene-0332',
-                                             ]
-                         )
+
+compute_example()

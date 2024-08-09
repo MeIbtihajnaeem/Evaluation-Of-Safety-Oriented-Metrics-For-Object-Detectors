@@ -1,4 +1,4 @@
-from utils.modified_nuscenes.eval.detection.evaluate import DetectionEval
+from utils.modified_nuscenes_pkl.eval.detection.evaluate import DetectionEval
 import torch
 from planning_centric_metrics.models import compile_model
 import os
@@ -93,6 +93,8 @@ class CollectionUtils(AbstractCollectionUtils):
     def create_dt(self, detector_file=None, val=None, model=None, d=1, r=1, t=1, verbose=False, nuscenes=None,
                   conf_value=None,
                   n_workers=None, bsz=None, gpu_id=None, output_dir=None, crit=None):
+        print("-----")
+        print(output_dir)
         dt = DetectionEval(nusc=nuscenes,
                            config=conf_value,
                            result_path=detector_file,
