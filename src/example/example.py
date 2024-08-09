@@ -31,6 +31,7 @@ from utils.class_implementations.collection_utils import CollectionUtils
 goal = GOAL.goal1
 notebook_home = "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/assets/"
 data_root = notebook_home + "nuscene/data"
+print(data_root)
 model_path = notebook_home + "pkl/planner.pt"
 mask_json = notebook_home + "pkl/masks_trainval.json"
 path = notebook_home + 'pkl/result_objects/'
@@ -79,7 +80,7 @@ def compute_example():
     file_utils = FileUtils()
     col_utils = CollectionUtils()
     collection_controller = CollectionController(settingsModel=settings, file_util=file_utils, ColUtils=col_utils)
-    collection_controller.run()
+    # collection_controller.run()
 
 
 compute_example()
