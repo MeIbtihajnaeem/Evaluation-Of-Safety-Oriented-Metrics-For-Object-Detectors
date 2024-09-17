@@ -75,12 +75,12 @@ def compute_example():
         nuscenes_detectors={
             "PointPillars": 'POINTP'
         },
-        scene_for_eval_set=['scene-0519','scene-0013']
+        scene_for_eval_set=['scene-0519', 'scene-0013']
     )
     file_utils = FileUtils()
     col_utils = CollectionUtils()
     collection_controller = CollectionController(settingsModel=settings, file_util=file_utils, ColUtils=col_utils)
-    # collection_controller.run()
+    collection_controller.run()
 
 
 compute_example()

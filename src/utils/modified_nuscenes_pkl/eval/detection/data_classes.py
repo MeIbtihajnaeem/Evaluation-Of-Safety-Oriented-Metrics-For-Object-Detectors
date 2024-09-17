@@ -401,7 +401,9 @@ class DetectionBox(EvalBox):
         # print("Trying to add ego data")
         # NOW I ADD EGO DATA
         # get ego values (speed)
+        print(sample_token)
         current_sample = nusc.get('sample', sample_token)
+        print(current_sample)
         ego_LIDAR = nusc.get("sample_data", current_sample["data"]["LIDAR_TOP"])  # prendo il prev sample
         ego_pose = nusc.get('ego_pose', ego_LIDAR['ego_pose_token'])
         ego_coordinates = ego_pose['translation']

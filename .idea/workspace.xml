@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3f36a04e-d70b-414c-bf51-e262b377be8e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/collection_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/collection_controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/example/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/example/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/data_classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/data_classes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/evaluate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +26,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2k3aV9z92GtZARYxwmyeeWfThuE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -37,7 +40,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.collection_controller.executor": "Run",
-    "Python.example.executor": "Run",
+    "Python.example.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/detectorAndTrajectoryPackage/src/utils/modified_nuscenes_pkl",
@@ -104,5 +107,16 @@
       <updated>1722514734991</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/data_classes.py</url>
+          <line>404</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

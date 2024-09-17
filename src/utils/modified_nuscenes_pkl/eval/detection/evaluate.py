@@ -70,9 +70,9 @@ recall_type = "NONE"
 gt_boxes = None
 pred_boxes = None
 
-gpuid = 0
-bsz = 128
-nworkers = 10
+# gpuid = 0
+# bsz = 128
+# nworkers = 10
 
 
 class DetectionEval:
@@ -423,7 +423,7 @@ class DetectionEval:
                 pkl = calculate_pkl(self.gt_boxes, box_tmp1,
                                     set_of_tokens, self.nusc,
                                     nusc_maps, device,
-                                    nworkers=nworkers, bsz=16,
+                                    nworkers=self.nworkers, bsz=self.bsz,
                                     plot_kextremes=0,
                                     verbose=verbose,
                                     model_loaded=model_loaded,  # an attempt to load the model outside the pkl
@@ -504,7 +504,7 @@ class DetectionEval:
             pkl = calculate_pkl(self.gt_boxes, box_tmp,
                                 set_of_tokens, self.nusc,
                                 nusc_maps, device,
-                                nworkers=nworkers, bsz=16,
+                                nworkers=self.nworkers, bsz=self.bsz,
                                 plot_kextremes=0,
                                 verbose=verbose,
                                 model_loaded=model_loaded,  # an attempt to load the model outside the pkl
@@ -567,7 +567,7 @@ class DetectionEval:
             box_tmp,
             listtoken, self.nusc,
             nusc_maps, device,
-            nworkers=nworkers, bsz=16,
+            nworkers=self.nworkers, bsz=self.bsz,
             plot_kextremes=image_counter,
             verbose=verbose,
             model_loaded=model_loaded,
@@ -625,7 +625,7 @@ class DetectionEval:
         pkl = calculate_pkl(self.gt_boxes, box_tmp,
                             listtoken, self.nusc,
                             nusc_maps, device,
-                            nworkers=nworkers, bsz=16,
+                            nworkers=self.nworkers, bsz=self.bsz,
                             plot_kextremes=0,
                             verbose=verbose,
                             model_loaded=model_loaded,  # an attempt to load the model outside the pkl
@@ -677,7 +677,7 @@ class DetectionEval:
             self.gt_boxes, box_tmp,
             listtoken, self.nusc,
             nusc_maps, device,
-            nworkers=nworkers, bsz=16,
+            nworkers=self.nworkers, bsz=self.bsz,
             plot_kextremes=plot_kextremes,
             verbose=verbose,
             model_loaded=model_loaded,  # an attempt to load the model outside the pkl
@@ -742,7 +742,7 @@ class DetectionEval:
             box_tmp,
             listtoken, self.nusc,
             nusc_maps, device,
-            nworkers=nworkers, bsz=16,
+            nworkers=self.nworkers, bsz=self.bsz,
             plot_kextremes=image_counter,
             verbose=verbose,
             model_loaded=model_loaded,
@@ -972,7 +972,7 @@ class DetectionEval:
         info, all_pkls, gtdist, preddist, gtxs, predxs, worst_ixes = test_pkl(self.gt_boxes, box_tmp,
                                                                               set_of_tokens, self.nusc,
                                                                               nusc_maps, device,
-                                                                              nworkers=nworkers, bsz=16,
+                                                                              nworkers=self.nworkers, bsz=self.bsz,
                                                                               plot_kextremes=plot_kextremes,
                                                                               verbose=verbose,
                                                                               visualize_only=False)

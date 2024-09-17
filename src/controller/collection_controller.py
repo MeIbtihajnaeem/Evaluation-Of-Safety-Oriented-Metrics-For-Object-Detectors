@@ -31,20 +31,20 @@ class CollectionController:
             self._compute_goal1()
         else:
             self._compute_goal2()
-        # confidence_threshold, criticality_threshold, d, r, t = self._compute_selected_precision_recall()
-        # data = self.file_util.read_data_from_file(
-        #     settings_model.save_build_precision_recall_curve_data + "metrics_details.json")
-        # normal_05, normal_1, normal_2, normal_4 = self.ColUtils.plot_normal(data, confidence_threshold)
-        # save_in = settings_model.notebook_home + 'pkl/results/' + settings_model.goal.name + '/all_objects/' + settings_model.detector.value + '/PrecisionRecall/ReducedBBoxes/'  # will save all the data, that we need to explore to build precision recall curves
-        # self._compute_selected_precision_recall(critic=criticality_threshold, save_in=save_in)
-        # data = self.file_util.read_data_from_file(
-        #     settings_model.save_build_precision_recall_curve_data + "metrics_details.json")
-        # special_05, special_1, special_2, special_4 = self.ColUtils.plot_special(data, confidence_threshold, save_in, d,
-        #                                                                          r, t)
-        # self.ColUtils.plot_normal_and_special(special_05, special_1, special_2, special_4, normal_05, normal_1,
-        #                                       normal_2,
-        #                                       normal_4, save_in, confidence_threshold,
-        #                                       self.settings_model.detector.value, d, r, t)
+        confidence_threshold, criticality_threshold, d, r, t = self._compute_selected_precision_recall()
+        data = self.file_util.read_data_from_file(
+            settings_model.save_build_precision_recall_curve_data + "metrics_details.json")
+        normal_05, normal_1, normal_2, normal_4 = self.ColUtils.plot_normal(data, confidence_threshold)
+        save_in = settings_model.notebook_home + 'pkl/results/' + settings_model.goal.name + '/all_objects/' + settings_model.detector.value + '/PrecisionRecall/ReducedBBoxes/'  # will save all the data, that we need to explore to build precision recall curves
+        self._compute_selected_precision_recall(critic=criticality_threshold, save_in=save_in)
+        data = self.file_util.read_data_from_file(
+            settings_model.save_build_precision_recall_curve_data + "metrics_details.json")
+        special_05, special_1, special_2, special_4 = self.ColUtils.plot_special(data, confidence_threshold, save_in, d,
+                                                                                 r, t)
+        self.ColUtils.plot_normal_and_special(special_05, special_1, special_2, special_4, normal_05, normal_1,
+                                              normal_2,
+                                              normal_4, save_in, confidence_threshold,
+                                              self.settings_model.detector.value, d, r, t)
 
     def _compute_selected_precision_recall(self, critic=None, save_in=None):
         print("Computation Started")
@@ -109,9 +109,11 @@ class CollectionController:
             if not os.path.exists(output_folder):
                 os.makedirs(output_folder)
                 # iterate on drt
+
             pkl_results_store, pkl_crit_results_store, ap_results_store = self._iterate_drt_goal1(detector_name,
                                                                                                   detector_file,
                                                                                                   output_folder)
+
 
             self.file_util.write_data_to_file(output_folder_path=output_folder + 'ap_results.json', key="AP_RESULTS",
                                               value=ap_results_store)
