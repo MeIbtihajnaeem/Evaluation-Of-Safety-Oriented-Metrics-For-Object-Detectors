@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3f36a04e-d70b-414c-bf51-e262b377be8e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/collection_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/collection_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/example/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/example/example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/data_classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/data_classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl/eval/detection/evaluate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

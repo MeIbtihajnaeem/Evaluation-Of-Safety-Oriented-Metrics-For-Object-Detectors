@@ -28,15 +28,26 @@ from controller.collection_controller import CollectionController
 from utils.file_utils import FileUtils
 from utils.class_implementations.collection_utils import CollectionUtils
 
+# goal = GOAL.goal1
+# notebook_home = "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/assets/"
+# data_root = notebook_home + "nuscene/data"
+# print(data_root)
+# model_path = notebook_home + "pkl/planner.pt"
+# mask_json = notebook_home + "pkl/masks_trainval.json"
+# path = notebook_home + 'pkl/result_objects/'
+# file_json = '/results_nusc.json'
+# result_path = notebook_home + 'pkl/results/' + goal.name + '/retry_allobjects/'
+
+
 goal = GOAL.goal1
-notebook_home = "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/assets/"
+notebook_home = "/home/notebook/"
 data_root = notebook_home + "nuscene/data"
 print(data_root)
-model_path = notebook_home + "pkl/planner.pt"
-mask_json = notebook_home + "pkl/masks_trainval.json"
-path = notebook_home + 'pkl/result_objects/'
+model_path = notebook_home + "pkl/Evaluation-of-Safety-Oriented-Metrics-for-Object-Detectors/metrics_model/planner.pt"
+mask_json = notebook_home + "pkl/Evaluation-of-Safety-Oriented-Metrics-for-Object-Detectors/metrics_model/masks_trainval.json"
+path = notebook_home + "pkl/result_objdet/"
 file_json = '/results_nusc.json'
-result_path = notebook_home + 'pkl/results/' + goal.name + '/retry_allobjects/'
+result_path = notebook_home + "pkl/results/" + goal.name + "/retry_allobjects/"
 
 
 def compute_example():
