@@ -25,7 +25,7 @@ setup(
 
     install_requires=[
         'torch==1.3.1',
-        'torchvision>=0.5.0',
+        'torchvision>=0.4.2',
         'Pillow<7.0.0',
         'pandas',
         'numpy',

@@ -115,8 +115,8 @@ class CollectionUtils(AbstractCollectionUtils):
 
     def load_pkl_model(self, model_path, mask_json, verbose):
         # constants related to how the planner was trained
-        # layer_names = ['road_segment', 'lane']
-        # line_names = ['road_divider', 'lane_divider']
+        #layer_names = ['road_segment', 'lane']
+        #line_names = ['road_divider', 'lane_divider']
         # stretch = 70.0
 
         device = torch.device(f'cuda:0')

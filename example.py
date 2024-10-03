@@ -24,9 +24,10 @@ from src.model.settings_model import SettingsModel
 from src.enumerations import OBJECT_CLASSES, GOAL
 import numpy as np
 from enumerations import DETECTOR
-from controller.collection_controller import CollectionController
-from utils.file_utils import FileUtils
-from utils.class_implementations.collection_utils import CollectionUtils
+
+from src.controller.collection_controller import CollectionController
+from src.utils.file_utils import FileUtils
+from src.utils.class_implementations.collection_utils import CollectionUtils
 
 # goal = GOAL.goal1
 # notebook_home = "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/assets/"
@@ -39,7 +40,7 @@ from utils.class_implementations.collection_utils import CollectionUtils
 # result_path = notebook_home + 'pkl/results/' + goal.name + '/retry_allobjects/'
 
 
-goal = GOAL.goal1
+goal = GOAL.goal2
 notebook_home = "/home/notebook/"
 data_root = notebook_home + "nuscene/data"
 print(data_root)
@@ -47,11 +48,12 @@ model_path = notebook_home + "pkl/Evaluation-of-Safety-Oriented-Metrics-for-Obje
 mask_json = notebook_home + "pkl/Evaluation-of-Safety-Oriented-Metrics-for-Object-Detectors/metrics_model/masks_trainval.json"
 path = notebook_home + "pkl/result_objdet/"
 file_json = '/results_nusc.json'
-result_path = notebook_home + "pkl/results/" + goal.name + "/retry_allobjects/"
+results_path = notebook_home + "ttpkl/results/" + goal.name + "/retry_allobjects/"
 
 
 def compute_example():
-    array_of_object_classes = [OBJECT_CLASSES.car.value]
+    #array_of_object_classes = [OBJECT_CLASSES.car.value,OBJECT_CLASSES.truck.value]
+    array_of_object_classes = [OBJECT_CLASSES.car.value,OBJECT_CLASSES.truck.value,OBJECT_CLASSES.bus.value,OBJECT_CLASSES.trailer.value,OBJECT_CLASSES.construction_vehicle.value,OBJECT_CLASSES.pedestrian.value,OBJECT_CLASSES.motorcycle.value,OBJECT_CLASSES.bicycle.value,OBJECT_CLASSES.traffic_cone.value,OBJECT_CLASSES.barrier.value]
     array_of_object_classes_reduced = [OBJECT_CLASSES.car.value]
     max_d = list(range(5, 55, 10))
     max_r = list(range(5, 55, 10))
@@ -60,6 +62,7 @@ def compute_example():
     conf_th = list(np.arange(0.05, 0.4, 0.05))
     criticalities = list(np.arange(0.10, 0.4, 0.05))
     settings = SettingsModel(
+        results_path=results_path,
         detector=DETECTOR.POINTP,
         mmdet3d_nuscenes_results_path="/",
         notebook_home=notebook_home,
@@ -86,7 +89,16 @@ def compute_example():
         nuscenes_detectors={
             "PointPillars": 'POINTP'
         },
-        scene_for_eval_set=['scene-0519', 'scene-0013']
+        scene_for_eval_set=['scene-0013',
+                'scene-0554',
+                'scene-0771',
+                'scene-0929',
+                'scene-1070',
+                'scene-1072',
+                'scene-0798',
+                'scene-0108',
+                'scene-0519',
+                'scene-0332',]
     )
     file_utils = FileUtils()
     col_utils = CollectionUtils()

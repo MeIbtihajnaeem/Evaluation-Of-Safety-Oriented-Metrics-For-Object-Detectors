@@ -20,9 +20,9 @@ class CollectionController:
         self.__validation_samples = self.ColUtils.get_validation_samples(self.__scenes_list, settingsModel.nuscenes)
         self.__list_token = self.ColUtils.get_list_token(validation_samples=self.__validation_samples)
         self.file_util = file_util
-        if not os.path.exists(settingsModel.result_path):
-            os.makedirs(settingsModel.result_path)
-        with open(settingsModel.result_path + "token_list.json", "w") as outfile:
+        if not os.path.exists(settingsModel.results_path):
+            os.makedirs(settingsModel.results_path)
+        with open(settingsModel.results_path + "token_list.json", "w") as outfile:
             json.dump(self.__validation_samples, outfile)
 
     def run(self):
@@ -35,7 +35,7 @@ class CollectionController:
         data = self.file_util.read_data_from_file(
             settings_model.save_build_precision_recall_curve_data + "metrics_details.json")
         normal_05, normal_1, normal_2, normal_4 = self.ColUtils.plot_normal(data, confidence_threshold)
-        save_in = settings_model.notebook_home + 'pkl/results/' + settings_model.goal.name + '/all_objects/' + settings_model.detector.value + '/PrecisionRecall/ReducedBBoxes/'  # will save all the data, that we need to explore to build precision recall curves
+        save_in = settings_model.notebook_home + 'ttpkl/results/' + settings_model.goal.name + '/all_objects/' + settings_model.detector.value + '/PrecisionRecall/ReducedBBoxes/'  # will save all the data, that we need to explore to build precision recall curves
         self._compute_selected_precision_recall(critic=criticality_threshold, save_in=save_in)
         data = self.file_util.read_data_from_file(
             settings_model.save_build_precision_recall_curve_data + "metrics_details.json")
@@ -74,7 +74,7 @@ class CollectionController:
         detectors = settings_model.nuscenes_detectors
         path = settings_model.path_for_object_detectors_result_dir
         file_json = settings_model.path_for_object_detectors_result_json_file
-        result_path = settings_model.result_path
+        result_path = settings_model.results_path
         goal = settings_model.goal.value
 
         for detector_name, folder in detectors.items():
@@ -97,7 +97,7 @@ class CollectionController:
         detectors = settings_model.nuscenes_detectors
         path = settings_model.path_for_object_detectors_result_dir
         file_json = settings_model.path_for_object_detectors_result_json_file
-        result_path = settings_model.result_path
+        result_path = settings_model.results_path
 
         # iterate on all detectors (SSN, POINTPILLARS, ...)
         for detector_name, folder in detectors.items():
