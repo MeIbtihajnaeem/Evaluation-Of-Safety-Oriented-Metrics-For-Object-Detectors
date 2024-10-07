@@ -9,7 +9,7 @@ import nuscenes.eval.detection.config as config
 
 class SettingsModel:
     def __init__(self,
-                results_path: str,
+                 results_path: str,
                  detector: DETECTOR,
                  mmdet3d_nuscenes_results_path: str,
                  notebook_home: str,
@@ -93,8 +93,6 @@ class SettingsModel:
         self.results_path = results_path
         self.notebook_home = notebook_home
 
-        
-
         self.goal = goal
         self.arrayOfObjectClasses = array_of_object_classes
         self.array_of_object_classes_reduced = array_of_object_classes_reduced
@@ -111,7 +109,7 @@ class SettingsModel:
         self.nuscenes_detectors = nuscenes_detectors
         self.scene_for_eval_set = scene_for_eval_set
         self.data_root = data_root
-        goal_value = goal.value+""
+        goal_value = goal.value + ""
         #self.result_path = notebook_home + "pkl/results/"+goal_value+"/retry_allobjects/"
         self.drt = list(itertools.product(*[max_d, max_r, max_t]))
         self.nuscenes = NuScenes('v1.0-trainval', dataroot=data_root)
@@ -124,8 +122,8 @@ class SettingsModel:
         self.detector = detector
 
         detector_value = detector.value
-        self.save_build_precision_recall_curve_data = notebook_home+"ttpkl/"+goal_value+"/result_objects/"+detector_value+'/PrecisionRecall/Normal/'
-        self.detector_file = detector_file+detector_value+'/results_nusc.json'
+        self.save_build_precision_recall_curve_data = notebook_home + "ttpkl/" + goal_value + "/result_objects/" + detector_value + '/PrecisionRecall/Normal/'
+        self.detector_file = detector_file + detector_value + '/results_nusc.json'
 
     def __repr__(self):
         return f"SettingsModel(goal={self.goal}, mmdet3d_nuscenes_results_path='{self.mmdet3d_nuscenes_results_path}')"

@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3f36a04e-d70b-414c-bf51-e262b377be8e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/collection_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/collection_controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/settings_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/settings_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,16 +34,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.collection_controller.executor&quot;: &quot;Run&quot;,
-    &quot;Python.example.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/detectorAndTrajectoryPackage/src/utils/modified_nuscenes_pkl&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.collection_controller.executor": "Run",
+    "Python.example.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/detectorAndTrajectoryPackage/src/utils/modified_nuscenes_pkl",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl" />
