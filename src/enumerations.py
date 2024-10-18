@@ -1,5 +1,5 @@
 from enum import Enum
-from model.detector_configuration_model import DetectorConfigurationModel
+from model.Domain_models.detector_configuration_model import DetectorConfigurationModel
 
 
 class GOAL(Enum):

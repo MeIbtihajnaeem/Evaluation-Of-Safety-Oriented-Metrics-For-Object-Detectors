@@ -20,7 +20,7 @@
          'scene-1068', 'scene-1069', 'scene-1070', 'scene-1071', 'scene-1072', 'scene-1073']
 """
 
-from src.model.settings_model import SettingsModel
+from model.DTOs.settings_model import SettingsModel
 from src.enumerations import OBJECT_CLASSES, GOAL
 import numpy as np
 from enumerations import DETECTOR

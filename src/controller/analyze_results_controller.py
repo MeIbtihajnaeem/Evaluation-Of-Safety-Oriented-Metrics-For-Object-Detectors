@@ -1,25 +1,20 @@
-from model.analyze_model import AnalyzeModel
+from model.DTOs.analyze_model import AnalyzeModel
 from enumerations import GOAL
-import json, os
 from glob import glob
 from utils.class_implementations.analyzer_utils import AnalyzerUtils
+from model.Domain_models.combined_detector_performance_metrics import CombinedDetectorPerformanceMetrics
 
 
 class AnalyzeResultsController:
     def __init__(self, analyzeModel: AnalyzeModel, analyzerUtils: AnalyzerUtils):
         self.goal = analyzeModel.goal
         self.path_for_all_objects = analyzeModel.path_for_all_objects
-        self.detector_results_path = analyzeModel.detector_results_path
         self.analyzerUtils = analyzerUtils
+        self.result_total = {}
 
-    def compute(self):
+    def get_keys(self):
         goal = self.goal
         path_for_all_objects = self.path_for_all_objects
-        detector_results_path = self.detector_results_path
-
-        results_file_ap = ""
-        results_file_pkl_crit = ""
-        results_file_pkl = ""
         if goal == GOAL.goal1:
             results_file_ap = 'ap_results.json'
             results_file_pkl_crit = 'pkl_crit_results_GOAL1.json'
@@ -35,9 +30,23 @@ class AnalyzeResultsController:
                                                                results_file_ap=results_file_ap,
                                                                results_file_pkl_crit=results_file_pkl_crit,
                                                                results_file_PKL=results_file_pkl)
-        pkl_data = self.analyzerUtils.pkl_mean_ap_statistics(goal=goal, results_total=results_total,
-                                                             detector_results_path=detector_results_path)
-        original_data = self.analyzerUtils.mean_ap_statistics(goal=goal, results_total=results_total,
-                                                              detector_results_path=detector_results_path)
-        print(pkl_data)
-        print(original_data)
+        self.result_total = results_total
+        return results_total
+
+    def compute(self, single_key_path: str):
+        if not isinstance(single_key_path, str):
+            raise ValueError(
+                "Please provide a valid path")
+        if self.result_total == {}:
+            raise ValueError(
+                "Please generate key first")
+        goal = self.goal
+        pkl_data = self.analyzerUtils.pkl_mean_ap_statistics(goal=goal, results_total=self.result_total,
+                                                             path_for_single_key=single_key_path)
+
+        if goal == GOAL.goal1:
+            original_data = self.analyzerUtils.original_mean_ap_statistics(goal=goal, results_total=self.result_total,
+                                                                           detector_results_path=single_key_path)
+            return CombinedDetectorPerformanceMetrics(pkl_metrics=pkl_data, original_metrics=original_data)
+
+        return CombinedDetectorPerformanceMetrics(pkl_metrics=pkl_data, original_metrics=None)

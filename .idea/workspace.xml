@@ -36,11 +36,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.analyze_results_controller.executor": "Run",
+    "Python.analyzer_utils.executor": "Run",
     "Python.collection_controller.executor": "Run",
+    "Python.combined_detector_performance_metrics.executor": "Run",
     "Python.example.executor": "Run",
+    "Python.example_analyze.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/detectorAndTrajectoryPackage/src/utils/modified_nuscenes_pkl",
+    "last_opened_file_path": "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/detectorAndTrajectoryPackage/src",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
@@ -53,6 +57,8 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/model/Domain_models" />
+      <recent name="$PROJECT_DIR$/src/model/DTOs" />
       <recent name="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl" />
       <recent name="$PROJECT_DIR$/src/utils/class_implementations" />
       <recent name="$PROJECT_DIR$/src/example" />

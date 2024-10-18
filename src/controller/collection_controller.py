@@ -1,5 +1,5 @@
 from enumerations import GOAL
-from model.settings_model import SettingsModel
+from model.DTOs.settings_model import SettingsModel
 
 import json
 from utils.class_implementations.collection_utils import CollectionUtils
