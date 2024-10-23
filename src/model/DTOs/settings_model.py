@@ -10,7 +10,6 @@ import nuscenes.eval.detection.config as config
 class SettingsModel:
     def __init__(self,
                  results_path: str,
-                 detector: DETECTOR,
                  mmdet3d_nuscenes_results_path: str,
                  notebook_home: str,
                  data_root: str,
@@ -29,6 +28,7 @@ class SettingsModel:
                  dist=None,
                  conf_th=None,
                  criticalities=None,
+                 detector= None,
                  n_workers=10,
                  bsz=128,
                  gpu_id=-1,
@@ -85,9 +85,6 @@ class SettingsModel:
         if not isinstance(path_for_object_detectors_result_json_file, str):
             raise ValueError(
                 "Please provide a valid path for results of the object detectors json file (result_nusc.json)")
-        if not isinstance(detector, DETECTOR):
-            raise ValueError(
-                "Please provide a valid detector ")
 
         self.mmdet3d_nuscenes_results_path = mmdet3d_nuscenes_results_path
         self.results_path = results_path
@@ -125,18 +122,3 @@ class SettingsModel:
         self.save_build_precision_recall_curve_data = notebook_home + "ttpkl/" + goal_value + "/result_objects/" + detector_value + '/PrecisionRecall/Normal/'
         self.detector_file = detector_file + detector_value + '/results_nusc.json'
 
-    def __repr__(self):
-        return f"SettingsModel(goal={self.goal}, mmdet3d_nuscenes_results_path='{self.mmdet3d_nuscenes_results_path}')"
-
-    def to_dict(self):
-        return {
-            "goal": self.goal,
-            "mmdet3d_nuscenes_results_path": self.mmdet3d_nuscenes_results_path
-        }
-
-    @classmethod
-    def from_dict(cls, data):
-        goal = data.get("goal")
-        mmdet3d_nuscenes_results_path = data.get("mmdet3d_nuscenes_results_path")
-
-        return cls(goal=goal, mmdet3d_nuscenes_results_path=mmdet3d_nuscenes_results_path)

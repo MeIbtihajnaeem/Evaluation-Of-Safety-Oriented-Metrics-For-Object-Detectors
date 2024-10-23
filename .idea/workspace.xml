@@ -42,19 +42,20 @@
     "Python.combined_detector_performance_metrics.executor": "Run",
     "Python.example.executor": "Run",
     "Python.example_analyze.executor": "Run",
+    "Python.example_collection.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/detectorAndTrajectoryPackage/src",
+    "last_opened_file_path": "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/detectorAndTrajectoryPackage",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/utils/modified_nuscenes_pkl" />
       <recent name="$PROJECT_DIR$/src/utils/modified_nuscenes/eval" />
       <recent name="$PROJECT_DIR$/src/utils/pkl" />
       <recent name="$PROJECT_DIR$/src/utils/modified_nuscenes/eval/detection" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/model/Domain_models" />

@@ -20,43 +20,16 @@
          'scene-1068', 'scene-1069', 'scene-1070', 'scene-1071', 'scene-1072', 'scene-1073']
 """
 
-from model.DTOs.settings_model import SettingsModel
 from src.enumerations import OBJECT_CLASSES, GOAL
-import numpy as np
-from enumerations import DETECTOR
-
-from src.controller.collection_controller import CollectionController
-from src.utils.file_utils import FileUtils
-from src.utils.class_implementations.collection_utils import CollectionUtils
+from model.DTOs.settings_model_for_goal2_detector import SettingsForGoal2Detector
 import json
+from enumerations import DETECTOR
+from controller.goal2_detector_controller import Goal2DetectorController
 
 
-# goal = GOAL.goal1
-# notebook_home = "/Users/ibtihajnaeem/Documents/version_control/thesis/detectAndTrajectoryPackage/assets/"
-# data_root = notebook_home + "nuscene/data"
-# print(data_root)
-# model_path = notebook_home + "pkl/planner.pt"
-# mask_json = notebook_home + "pkl/masks_trainval.json"
-# path = notebook_home + 'pkl/result_objects/'
-# file_json = '/results_nusc.json'
-# result_path = notebook_home + 'pkl/results/' + goal.name + '/retry_allobjects/'
-
-
-# goal = GOAL.goal2
-# notebook_home = "/home/notebook/"
-# data_root = notebook_home + "nuscene/data"
-# print(data_root)
-# model_path = notebook_home + "pkl/Evaluation-of-Safety-Oriented-Metrics-for-Object-Detectors/metrics_model/planner.pt"
-# mask_json = notebook_home + "pkl/Evaluation-of-Safety-Oriented-Metrics-for-Object-Detectors/metrics_model/masks_trainval.json"
-# path = notebook_home + "pkl/result_objdet/"
-# file_json = '/results_nusc.json'
-# results_path = notebook_home + "ttpkl/results/" + goal.name + "/retry_allobjects/"
-
-
-def compute_example():
+def compute_example_goal2():
     with open('json_file_for_example_collection.json', 'r') as f:
         config = json.load(f)
-    goal = GOAL.goal1
     notebook_home = config["notebook_home"]
     data_root = config["data_root"]
     model_path = config["model_path"]
@@ -71,52 +44,38 @@ def compute_example():
     bsz = config["bsz"]
     gpu_id = config["gpu_id"]
     mmdet3d_nuscenes_results_path = config["mmdet3d_nuscenes_results_path"]
-
-    #array_of_object_classes = [OBJECT_CLASSES.car.value,OBJECT_CLASSES.truck.value]
+    path_for_image_plots = config["path_for_image_plots"]
     array_of_object_classes = [OBJECT_CLASSES.car.value, OBJECT_CLASSES.truck.value, OBJECT_CLASSES.bus.value,
                                OBJECT_CLASSES.trailer.value, OBJECT_CLASSES.construction_vehicle.value,
                                OBJECT_CLASSES.pedestrian.value, OBJECT_CLASSES.motorcycle.value,
                                OBJECT_CLASSES.bicycle.value, OBJECT_CLASSES.traffic_cone.value,
                                OBJECT_CLASSES.barrier.value]
-    array_of_object_classes_reduced = [OBJECT_CLASSES.car.value]
-    max_d = list(range(5, 55, 10))
-    max_r = list(range(5, 55, 10))
-    max_t = list(range(4, 25, 10))
-    dist = [0.5, 1.0, 2.0, 4.0]
-    conf_th = list(np.arange(0.05, 0.4, 0.05))
-    criticalities = list(np.arange(0.10, 0.4, 0.05))
-    settings = SettingsModel(
-        results_path=results_path,
-        detector={DETECTOR.POINTP.name: DETECTOR.POINTP.value},
+    settings = SettingsForGoal2Detector(
+        result_path=results_path,
+        detector={DETECTOR.SSN.name:DETECTOR.SSN.value},
         mmdet3d_nuscenes_results_path=mmdet3d_nuscenes_results_path,
         notebook_home=notebook_home,
         data_root=data_root,
-        pkl_planner_path=model_path,
-        mask_json_path=mask_json,
-        path_for_object_detectors_result_dir=path,
-        path_for_object_detectors_result_json_file=file_json,
+        model_path=model_path,
+        mask_json=mask_json,
+        path=path,
+        file_json=file_json,
         detector_file="none",
-        goal=goal,
         array_of_object_classes=array_of_object_classes,
-        array_of_object_classes_reduced=array_of_object_classes_reduced,
-        max_d=max_d,
-        max_r=max_r,
-        max_t=max_t,
         verbose=False,
-        dist=dist,
-        conf_th=conf_th,
-        criticalities=criticalities,
         n_workers=n_workers,
         bsz=bsz,
         gpu_id=gpu_id,
-        number_of_image_bird_view=number_of_image_bird_view,
+        number_of_image=number_of_image_bird_view,
         nuscenes_detectors=nuscenes_detectors,
-        scene_for_eval_set=scene_for_eval_set
+        scene_for_eval_set=scene_for_eval_set,
+        path_for_image_plots=path_for_image_plots
     )
-    file_utils = FileUtils()
-    col_utils = CollectionUtils()
-    collection_controller = CollectionController(settingsModel=settings, file_util=file_utils, ColUtils=col_utils)
-    collection_controller.run()
-
-
-compute_example()
+    goal2_controller = Goal2DetectorController(settingsModel=settings)
+    result = goal2_controller.compute()
+    print(len(result.original_better))
+    print(len(result.dynamic_better))
+    print(len(result.final_list))
+    token_list_in_use = result.dynamic_better
+    print(result.original_better)
+    goal2_controller.analyze_token_with_trajectory(single_token=token_list_in_use[0],dt=result.get_dt())

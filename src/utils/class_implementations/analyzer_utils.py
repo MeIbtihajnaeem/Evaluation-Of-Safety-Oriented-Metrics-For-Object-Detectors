@@ -1,6 +1,7 @@
 import json, os
 from enumerations import GOAL
 from model.Domain_models.detector_performance_metrics import DetectorPerformanceMetrics
+from operator import itemgetter
 
 
 def _get_data(goal, data):
@@ -11,6 +12,25 @@ def _get_data(goal, data):
 
 
 class AnalyzerUtils:
+
+    @staticmethod
+    def pkl_comparison_analyzer(pkl_dynamic_results, pkl_original):
+        lis_tone = []
+        for i in pkl_dynamic_results[0]['full']:
+            value = round(pkl_dynamic_results[0]['full'][i] - pkl_original[0]['full'][i], 4)
+            lis_tone.append([i, value])
+        sorted_lis_tone = sorted(lis_tone, key=itemgetter(1))
+        final_list = []
+        dynamic_better = []
+        original_better = []
+        for j in sorted_lis_tone:
+            final_list.append(j[0])
+            if j[1] < 0:  # pkl original > pkl dynamic
+                dynamic_better.append(j[0])
+            elif j[1] > 0:  # pkl original < pkl dynamic
+                original_better.append(j[0])
+        return original_better, dynamic_better, final_list
+
     @staticmethod
     def analyze_pkl_crit_goal(path, file_name, goal):
         f = open(path + "/" + file_name)

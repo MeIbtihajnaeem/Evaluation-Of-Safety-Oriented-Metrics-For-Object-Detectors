@@ -1,0 +1,29 @@
+{
+    "notebook_home": "/home/notebook/",
+    "data_root": "/home/notebook/nuscene/data",
+    "model_path": "/home/notebook/pkl/Evaluation-of-Safety-Oriented-Metrics-for-Object-Detectors/metrics_model/planner.pt",
+    "mask_json": "/home/notebook/pkl/Evaluation-of-Safety-Oriented-Metrics-for-Object-Detectors/metrics_model/masks_trainval.json",
+    "path": "/home/notebook/pkl/result_objdet/",
+    "file_json": "/results_nusc.json",
+    "results_path": "/home/notebook/ttpkl/results/goal2/retry_allobjects/",
+    "scene_for_eval_set": [
+        "scene-0013",
+        "scene-0554",
+        "scene-0771",
+        "scene-0929",
+        "scene-1070",
+        "scene-1072",
+        "scene-0798",
+        "scene-0108",
+        "scene-0519",
+        "scene-0332"
+    ],
+    "nuscenes_detectors": {
+        "PointPillars": "POINTP"
+    },
+    "number_of_image_bird_view": 0,
+    "n_workers": 10,
+    "bsz": 128,
+    "gpu_id": 0,
+    "mmdet3d_nuscenes_results_path": "/"
+}
